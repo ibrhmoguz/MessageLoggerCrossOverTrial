@@ -33,6 +33,11 @@ namespace MessageLoggerApi.Controllers
                 return Unauthorized();
             }
 
+            if (!ObjectId.TryParse(authParameters[0], out ObjectId applicationId))
+            {
+                return BadRequest("There is something wrong in Authorization header. Please check applicationId, It should be 32 character id for which to create the token");
+            }
+
             var application = await _db.GetCollection<Application>("Application")
                                         .Find(a => a.Id == new ObjectId(authParameters[0]) && a.ApplicationSecret == authParameters[1])
                                         .FirstOrDefaultAsync();
