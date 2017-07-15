@@ -30,6 +30,7 @@ namespace MessageLoggerApi
             services.AddScoped(s => new MongoClient(mongodbConnectionString).GetDatabase(mongodbDatabaseName));
 
             services.AddCors();
+            services.AddMemoryCache();
             services.AddMvc();
         }
 

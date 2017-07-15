@@ -11,6 +11,13 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\stylecop.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infra\**" />
+    <Content Remove="Infra\**" />
+    <EmbeddedResource Remove="Infra\**" />
+    <None Remove="Infra\**" />
+  </ItemGroup>
   
   <ItemGroup>
     <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
