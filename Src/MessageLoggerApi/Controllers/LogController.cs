@@ -1,11 +1,11 @@
+using System;
 using System.Threading.Tasks;
 using MessageLoggerApi.Contracts;
-using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using MessageLoggerApi.Models;
-using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace MessageLoggerApi.Controllers
 {
