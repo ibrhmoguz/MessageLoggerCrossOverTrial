@@ -25,6 +25,11 @@ namespace MessageLoggerApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (string.IsNullOrEmpty(contract.DisplayName))
+            {
+                return BadRequest();
+            }
+
             if (await _db.GetCollection<Application>("Application").Find(a => a.DisplayName == contract.DisplayName).FirstOrDefaultAsync() != null)
             {
                 return BadRequest(new { DisplayName = new[] { "Display name already in use by another application" } });

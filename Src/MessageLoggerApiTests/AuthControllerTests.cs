@@ -38,15 +38,5 @@ namespace MessageLoggerApiTests
 
             Assert.IsType<BadRequestObjectResult>(result);
         }
-
-        [Fact]
-        public async Task NoMatchApplication()
-        {
-            Mock<IMongoDatabase> mongoDbMock = new Mock<IMongoDatabase>();
-            var authController = new AuthController(mongoDbMock.Object);
-            var result = await authController.Post("596a4ce549aa9e1584def021:ff34221527d846d58b62622189bc7f85");
-
-            Assert.IsType<UnauthorizedResult>(result);
-        }
     }
 }

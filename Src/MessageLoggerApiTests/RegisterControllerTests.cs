@@ -1,14 +1,23 @@
+using System.Threading.Tasks;
+using MessageLoggerApi.Contracts;
+using MessageLoggerApi.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using MongoDB.Driver;
+using Moq;
 using Xunit;
 
 namespace MessageLoggerApiTests
 {
     public class RegisterControllerTests
     {
-        // This is just an example, you can remove this test
         [Fact]
-        public void ExampleUnitTest()
+        public async Task MissingDisplayName()
         {
-            Assert.True(false);
+            Mock<IMongoDatabase> mongoDbMock = new Mock<IMongoDatabase>();
+            var registerController = new RegisterController(mongoDbMock.Object);
+            var result = await registerController.Post(new RegisterContractInput() { DisplayName = string.Empty });
+
+            Assert.IsType<BadRequestResult>(result);
         }
     }
 }
